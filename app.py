@@ -1,4 +1,4 @@
-from flask import Flask,request, jsonify
+from flask import Flask,request, render_template,jsonify
 from assistant import legal_assistant
 
 app = Flask(__name__)
@@ -15,12 +15,6 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-while True:
-    user_query = input("You: ")
-    if user_query.lower() in ["exit", "bye","quit"]:
-        print("Legal Assistant: Goodbye! Have a great day!")
-        break
-    response = legal_assistant(user_query)
-    print("Legal Assistant:", response)
+
 
 
