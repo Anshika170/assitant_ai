@@ -2,6 +2,7 @@ import re
 
 def legal_assistant(query):
     
+    query_lower = query.lower()
     patterns = {
     
         r"(copyright|intellectual property)": "Copyright law protects original works of authorship.",
@@ -11,7 +12,7 @@ def legal_assistant(query):
         r"(civil law|lawsuit)": "Civil law deals with disputes between individuals or organizations, often seeking compensation or resolution through the courts.",
         r"(murder|killing|homicide|manslaughter)": "Murder is a criminal offense. Nobody has the right to kill any being against law.Murder, killing, and manslaughter are illegal acts punishable by law.",
         r"(stealing|theft|robbery)": "Stealing is taking someone else's property without permission unlawfully.Stealing, theft, and robbery are illegal acts punishable by law.",
-        r"(contract)": "A contract is a legally binding agreement between two or more parties.",
+        r"(contract|agreement)": "A contract or agreement is a legally binding agreement between two or more parties.",
         r"(criminal law)": "Criminal law deals with offenses against the state, and is concerned with punishment for unlawful acts.",
         r"(crime)": "Criminal law deals with offenses against the state, and is concerned with punishment for unlawful acts.",
         r"(civil law)": "Civil law deals with disputes between individuals or organizations, often seeking compensation or resolution through the courts.",
@@ -40,7 +41,7 @@ def legal_assistant(query):
         r"(concurrence)": "Concurrence is a legal principle that requires the actus reus and mens rea to occur together in order for a crime to be committed.",
         r"(causation)":"Causation is a legal principle that requires the actus reus to cause the harm or result that is prohibited by law.",
         r"(harm)": "Harm is a legal term that refers to the injury, loss, or damage caused by the defendant's wrongful conduct.",
-        r"(Miranda rights)": "Miranda rights are constitutional rights that must be read to a suspect before custodial interrogation.",
+        r"(miranda rights)": "Miranda rights are constitutional rights that must be read to a suspect before custodial interrogation.",
         r"(contract law)": "Contract law is a branch of civil law that deals with agreements between parties that create legally enforceable obligations.",
         r"(breach of contract|breaks a conract)":"Breach of contract occurs when one party fails to perform its obligations under a contract without a valid legal excuse.",
         r"(statute of limitations)": "The statute of limitations is a legal time limit within which a lawsuit must be filed.",
@@ -51,12 +52,19 @@ def legal_assistant(query):
         r"(IPC)":"The Indian Penal Code (IPC) was the official criminal code in the Republic of India, inherited from British India after independence, until it was replaced by Bharatiya Nyaya Sanhita in December 2023. It was a comprehensive code intended to cover all substantive aspects of criminal law.",
         r"(liability|liabilities)":"Liabilities are debts or obligations a person or company owes to someone else. For example, a liability can be as simple as an I.O.U. to a friend or as big as a multibillion dollar loan to purchase a tech company.",
         r"(defendant)":" Individual or entity accused or sued in a legal case.",
+        r"(jail|prison)":"A building in which people are legally held as a punishment for a crime they have committed or while awaiting trial.",
+        r"(legal|law)":"The system of rules and regulations that are recognized and enforced by a particular country or community.Legal is something Relating to the administration of justice.",
+        r"(judge|justice|judy)":"A judge is a person who presides over court proceedings, either alone or as a part of a panel of judges while a justice is a member of the Supreme Court. While some may have the same responsibilities as justices and judges, ",
+        r"(lawyer|advocate|attorney|barrister)":"A lawyer is a professional who is qualified to offer advice about the law or represent someone in legal matters.A lawyer can be classified as an advocate, attorney, barrister, canon lawyer, civil law notary, counsel, solicitor, legal executive, and public servant.",
+        r"(court)":"A place where trials and other legal cases happen, or the people present in such a place, especially the officials and those deciding if someone is guilty",
+        r"(witness)":"Someone who is asked to be present at a particular event and sign their name in order to prove that things have been done correctly",
+        r"(traffic ticket)":"A piece of paper that officially tells a person that he or she has driven or parked a vehicle improperly and will have to pay a fine"
     }
 
 
    
     for pattern, response in patterns.items():
-        if re.search(pattern, query, re.IGNORECASE):
+        if re.search(pattern, query_lower, re.IGNORECASE):
             return response
 
     return "I'm sorry, I'm not sure how to answer that legal question.I am still learning. Maybe, we can try with another Question :)"

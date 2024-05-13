@@ -9,7 +9,7 @@ CORS(app)
 def process_query():
     if request.method == 'POST':
         user_query = request.json.get('query')
-        if user_query.lower() in ["exit", "bye"]:
+        if user_query.lower() in ["exit", "bye","quit"]:
             return jsonify({'response': "Goodbye! Have a great day!"})
         response = legal_assistant(user_query)
         return jsonify({'response': response})
